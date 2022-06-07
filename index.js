@@ -7,12 +7,14 @@ for (var i = 0; i < numOfDrumButtons; i++) {
     var buttonInnerHTML = this.innerHTML;
 
   drumPlay(buttonInnerHTML);
+  buttonAnime(buttonInnerHTML);
 
   });
 }
 //Detecting Keyboard keys pressed
 document.addEventListener("keydown", function(event) {
   drumPlay(event.key);
+  buttonAnime(event.key);
 });
 
 function drumPlay(key) {
@@ -54,4 +56,11 @@ function drumPlay(key) {
 
     default: console.log(buttonInnerHTML);
   }
+}
+function buttonAnime(currentKey) {
+  var activeButton = document.querySelector("." + currentKey);
+  activeButton.classList.add("pressed");
+setTimeout(function(){
+  activeButton.classList.remove("pressed");
+}, 100);
 }
